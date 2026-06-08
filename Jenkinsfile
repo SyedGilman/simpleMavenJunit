@@ -1,12 +1,13 @@
 pipeline {
 agent any
 
+```
 stages {
 
     stage('Checkout Code') {
         steps {
             git branch: 'dependabot/maven/junit-junit-4.13.1',
-                url: 'https://github.com/syedGilman/simpleMavenJunit.git'
+                url: 'https://github.com/SyedGilman/simpleMavenJunit.git'
         }
     }
 
@@ -37,12 +38,15 @@ stages {
 
 post {
     always {
-        junit '*/target/surefire-reports/TEST-.xml'
+        junit allowEmptyResults: true,
+              testResults: '**/target/surefire-reports/*.xml'
     }
 
     success {
-        archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+        archiveArtifacts artifacts: 'target/*.jar',
+                         fingerprint: true
     }
 }
+```
 
 }

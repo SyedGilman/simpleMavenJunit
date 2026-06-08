@@ -6,7 +6,7 @@ stages {
     stage('Checkout Code') {
         steps {
             git branch: 'dependabot/maven/junit-junit-4.13.1',
-                url: 'https://github.com/syedgilman/simpleMavenJunit.git'
+                url: 'https://github.com/syedGilman/simpleMavenJunit.git'
         }
     }
 
